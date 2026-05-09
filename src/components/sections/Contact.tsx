@@ -1,22 +1,16 @@
-import { useImperativeHandle, useRef, useState } from "react";
-import { Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import { useImperativeHandle, useRef } from "react";
 import { gsap } from "../../lib/gsap";
 import type { Direction, SectionHandle } from "../../lib/morph";
 
 const PHONE_DIGITS = "529514997286";
 const PHONE_DISPLAY = "+52 951 499 7286";
-const EMAIL = "hola@plasmastudios.mx";
+const EMAIL = "plasmastudio44@gmail.com";
+const TIKTOK_HANDLE = "plasma.studios7";
 
 type Props = { ref?: React.Ref<SectionHandle> };
 
 export function Contact({ ref }: Props) {
   const root = useRef<HTMLElement>(null);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    projectType: "Landing page",
-    message: "",
-  });
 
   useImperativeHandle(
     ref,
@@ -26,17 +20,6 @@ export function Contact({ ref }: Props) {
     }),
     [],
   );
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Cotización: ${form.projectType}`);
-    const body = encodeURIComponent(
-      `Hola, soy ${form.name} (${form.email}).\n\nProyecto: ${form.projectType}\n\n${form.message}`,
-    );
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-  };
-
-  const isValid = form.name.trim() && form.email.trim() && form.message.trim();
 
   return (
     <section
@@ -66,14 +49,106 @@ export function Contact({ ref }: Props) {
         aria-hidden
       />
 
-      <div className="max-w-5xl w-full relative z-10 grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-        {/* LEFT — pitch */}
-        <div className="c-head">
-          <h2
-            className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] font-black tracking-[-0.035em] leading-none pb-1"
+      {/* Centered single-column pitch */}
+      <div className="c-head max-w-3xl w-full relative z-10 text-center">
+        <h2
+          className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] font-black tracking-[-0.035em] leading-none pb-1"
+          style={{ color: "#1c130a" }}
+        >
+          Iniciemos{" "}
+          <span
+            className="italic"
+            style={{
+              fontFamily: '"Fraunces", Georgia, serif',
+              color: "#b07e3d",
+            }}
+          >
+            conversación
+          </span>
+          .
+        </h2>
+        <p
+          className="mt-5 text-sm md:text-base leading-relaxed max-w-md mx-auto"
+          style={{ color: "#3d2918" }}
+        >
+          Reunión inicial sin compromiso de 30 minutos para evaluar
+          el alcance del proyecto y proponer cronograma.
+        </p>
+
+        {/* Direct contact info — phone is the headliner */}
+        <div className="mt-10 space-y-3">
+          <a
+            href={`tel:+${PHONE_DIGITS}`}
+            className="block font-display text-3xl md:text-[2.4rem] font-black tracking-[-0.02em] hover:translate-x-0.5 transition-transform duration-300"
             style={{ color: "#1c130a" }}
           >
-            Iniciemos{" "}
+            {PHONE_DISPLAY}
+          </a>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="block font-display text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300"
+            style={{ color: "#5a4332" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#1c130a")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#5a4332")}
+          >
+            {EMAIL}
+          </a>
+        </div>
+
+        {/* Quick service info — glass panel */}
+        <div className="glass-card-light mt-12 p-6 rounded-2xl max-w-md mx-auto text-left">
+          <div className="relative z-10 space-y-3">
+            <div
+              className="flex items-baseline justify-between gap-4 pb-3"
+              style={{ borderBottom: "1px solid rgba(176,126,61,0.18)" }}
+            >
+              <span
+                className="font-mono text-[10px] tracking-[0.3em] uppercase"
+                style={{ color: "#8a6e52" }}
+              >
+                Respuesta
+              </span>
+              <span className="text-sm" style={{ color: "#3d2918" }}>
+                24 horas hábiles
+              </span>
+            </div>
+            <div
+              className="flex items-baseline justify-between gap-4 pb-3"
+              style={{ borderBottom: "1px solid rgba(176,126,61,0.18)" }}
+            >
+              <span
+                className="font-mono text-[10px] tracking-[0.3em] uppercase"
+                style={{ color: "#8a6e52" }}
+              >
+                Reunión inicial
+              </span>
+              <span className="text-sm" style={{ color: "#3d2918" }}>
+                Sin compromiso · 30 min
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between gap-4">
+              <span
+                className="font-mono text-[10px] tracking-[0.3em] uppercase"
+                style={{ color: "#8a6e52" }}
+              >
+                Ubicación
+              </span>
+              <span className="text-sm" style={{ color: "#3d2918" }}>
+                Oaxaca, México
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SOCIAL BLOCK — round icon buttons */}
+      <div className="c-social relative z-10 mt-20 md:mt-24 w-full max-w-3xl">
+        <div className="text-center mb-10">
+          <h3
+            className="font-display text-2xl md:text-4xl font-black tracking-[-0.02em] leading-[0.95] mb-3 pb-1"
+            style={{ color: "#1c130a" }}
+          >
+            También por{" "}
             <span
               className="italic"
               style={{
@@ -81,237 +156,128 @@ export function Contact({ ref }: Props) {
                 color: "#b07e3d",
               }}
             >
-              conversación
+              aquí
             </span>
             .
-          </h2>
+          </h3>
           <p
-            className="mt-5 text-sm md:text-base leading-relaxed max-w-md"
+            className="text-sm md:text-base leading-relaxed max-w-md mx-auto"
             style={{ color: "#3d2918" }}
           >
-            Reunión inicial sin compromiso de 30 minutos para evaluar
-            el alcance del proyecto y proponer cronograma.
+            Donde sea más cómodo para ti. Respondemos rápido en cualquier canal.
           </p>
-
-          {/* Direct contact info — phone is the headliner */}
-          <div className="mt-10 space-y-3">
-            <a
-              href={`tel:+${PHONE_DIGITS}`}
-              className="group block font-display text-3xl md:text-[2.4rem] font-black tracking-[-0.02em] hover:translate-x-0.5 transition-transform duration-300"
-              style={{ color: "#1c130a" }}
-            >
-              {PHONE_DISPLAY}
-            </a>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="group block font-display text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300"
-              style={{ color: "#5a4332" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#1c130a")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#5a4332")}
-            >
-              {EMAIL}
-            </a>
-          </div>
-
-          {/* Direct channels — buttons under the contact details */}
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href={`https://wa.me/${PHONE_DIGITS}`}
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-center gap-2 font-mono text-xs tracking-[0.25em] uppercase transition-colors"
-              style={{ color: "#3d2918" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#1c130a")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#3d2918")}
-            >
-              <MessageCircle className="size-3.5" />
-              WhatsApp
-              <ArrowUpRight className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <span style={{ color: "rgba(61, 41, 24, 0.32)" }}>·</span>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="group inline-flex items-center gap-2 font-mono text-xs tracking-[0.25em] uppercase transition-colors"
-              style={{ color: "#3d2918" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#1c130a")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#3d2918")}
-            >
-              <Mail className="size-3.5" />
-              Email
-              <ArrowUpRight className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </div>
-
-          {/* Quick service info — glass panel (cream) */}
-          <div className="glass-card-light mt-10 p-6 rounded-2xl max-w-md">
-            <div className="relative z-10 space-y-3">
-              <div
-                className="flex items-baseline justify-between gap-4 pb-3"
-                style={{ borderBottom: "1px solid rgba(176,126,61,0.18)" }}
-              >
-                <span
-                  className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                  style={{ color: "#8a6e52" }}
-                >
-                  Respuesta
-                </span>
-                <span className="text-sm" style={{ color: "#3d2918" }}>
-                  24 horas hábiles
-                </span>
-              </div>
-              <div
-                className="flex items-baseline justify-between gap-4 pb-3"
-                style={{ borderBottom: "1px solid rgba(176,126,61,0.18)" }}
-              >
-                <span
-                  className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                  style={{ color: "#8a6e52" }}
-                >
-                  Reunión inicial
-                </span>
-                <span className="text-sm" style={{ color: "#3d2918" }}>
-                  Sin compromiso · 30 min
-                </span>
-              </div>
-              <div className="flex items-baseline justify-between gap-4">
-                <span
-                  className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                  style={{ color: "#8a6e52" }}
-                >
-                  Ubicación
-                </span>
-                <span className="text-sm" style={{ color: "#3d2918" }}>
-                  Oaxaca, México
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* RIGHT — form wrapped in honey glass card */}
-        <form
-          onSubmit={handleSubmit}
-          className="c-form glass-card-light glass-card-light--honey grid gap-5 p-7 md:p-8 rounded-3xl"
-        >
-          <span className="glass-card-blob-light" aria-hidden />
-          <Field label="Nombre">
-            <input
-              required
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className={inputCls}
-              placeholder="Tu nombre"
-            />
-          </Field>
-          <Field label="Email">
-            <input
-              required
-              type="email"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className={inputCls}
-              placeholder="tu@correo.com"
-            />
-          </Field>
-          <Field label="Tipo de proyecto">
-            <select
-              value={form.projectType}
-              onChange={(e) =>
-                setForm({ ...form, projectType: e.target.value })
-              }
-              className={inputCls}
-            >
-              <option>Landing page</option>
-              <option>Sitio corporativo</option>
-              <option>E-commerce</option>
-              <option>Otro / no estoy seguro</option>
-            </select>
-          </Field>
-          <Field label="Cuéntame del proyecto">
-            <textarea
-              required
-              rows={5}
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className={`${inputCls} resize-none`}
-              placeholder="Qué quieres lograr, presupuesto aproximado, fechas..."
-            />
-          </Field>
-
-          <button
-            type="submit"
-            disabled={!isValid}
-            className="group mt-2 inline-flex items-center justify-between font-mono text-xs tracking-[0.3em] uppercase px-5 py-4 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{
-              background: isValid ? "#1c130a" : "transparent",
-              color: isValid ? "#ede0c2" : "#1c130a",
-              border: isValid
-                ? "1px solid #1c130a"
-                : "1px solid rgba(28, 19, 10, 0.32)",
-              boxShadow: isValid
-                ? "0 6px 22px -6px rgba(28, 19, 10, 0.4)"
-                : "none",
-            }}
-            onMouseEnter={(e) => {
-              if (e.currentTarget.disabled) return;
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#1c130a";
-              e.currentTarget.style.boxShadow =
-                "inset 0 0 0 1px #1c130a, 0 6px 22px -6px rgba(122, 79, 44, 0.45)";
-            }}
-            onMouseLeave={(e) => {
-              if (e.currentTarget.disabled) return;
-              e.currentTarget.style.background = "#1c130a";
-              e.currentTarget.style.color = "#ede0c2";
-              e.currentTarget.style.boxShadow =
-                "0 6px 22px -6px rgba(28, 19, 10, 0.4)";
-            }}
+        <div className="flex items-center justify-center gap-5 md:gap-7 flex-wrap">
+          <SocialButton
+            href={`https://wa.me/${PHONE_DIGITS}`}
+            ariaLabel="Contactar por WhatsApp"
           >
-            <span>{isValid ? "Enviar mensaje" : "Completa los campos"}</span>
-            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </button>
+            <WhatsAppIcon className="size-7" />
+          </SocialButton>
 
-          {/* Privacy line — small but reassuring */}
-          <p
-            className="font-mono text-[10px] tracking-[0.2em] uppercase mt-1"
-            style={{ color: "#8a6e52" }}
+          <SocialButton
+            href={`mailto:${EMAIL}`}
+            ariaLabel="Enviar correo a Plasma Studios"
           >
-            Mensaje vía email cifrado · Datos nunca compartidos
-          </p>
-        </form>
+            <GmailIcon className="size-7" />
+          </SocialButton>
+
+          <SocialButton
+            href={`https://www.tiktok.com/@${TIKTOK_HANDLE}`}
+            ariaLabel="Síguenos en TikTok"
+          >
+            <TikTokIcon className="size-7" />
+          </SocialButton>
+        </div>
       </div>
     </section>
   );
 }
 
-const inputCls =
-  "w-full px-0 py-3 bg-transparent outline-none transition-all duration-300 text-sm border-0 border-b text-[#1c130a] placeholder:text-[#8a6e52]/55 focus:placeholder:text-[#8a6e52]/85";
-
-function Field({
-  label,
-  children,
-}: {
-  label: string;
+type SocialButtonProps = {
+  href: string;
+  ariaLabel: string;
   children: React.ReactNode;
-}) {
+};
+
+function SocialButton({ href, ariaLabel, children }: SocialButtonProps) {
+  const isExternal = href.startsWith("http");
   return (
-    <label className="group block">
-      <span
-        className="font-mono text-[10px] tracking-[0.3em] uppercase mb-1.5 block transition-colors duration-300"
-        style={{ color: "#8a6e52" }}
-      >
-        {label}
-      </span>
-      <div
-        style={{
-          borderBottom: "1px solid rgba(176,126,61,0.32)",
-          color: "#1c130a",
-          transition: "border-color 200ms",
-        }}
-      >
+    <a
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+      aria-label={ariaLabel}
+      className="group inline-flex items-center justify-center size-16 md:size-20 rounded-full transition-all duration-500 hover:-translate-y-1"
+      style={{
+        background: "rgba(255,255,255,0.6)",
+        border: "1.5px solid rgba(176,126,61,0.40)",
+        boxShadow:
+          "inset 0 1px 0 rgba(255,255,255,0.85), 0 8px 22px -8px rgba(122,79,44,0.28)",
+        color: "#1c130a",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "#1c130a";
+        e.currentTarget.style.color = "#ede0c2";
+        e.currentTarget.style.borderColor = "#1c130a";
+        e.currentTarget.style.boxShadow =
+          "0 12px 28px -8px rgba(28,19,10,0.45), inset 0 1px 0 rgba(255,255,255,0.08)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "rgba(255,255,255,0.6)";
+        e.currentTarget.style.color = "#1c130a";
+        e.currentTarget.style.borderColor = "rgba(176,126,61,0.40)";
+        e.currentTarget.style.boxShadow =
+          "inset 0 1px 0 rgba(255,255,255,0.85), 0 8px 22px -8px rgba(122,79,44,0.28)";
+      }}
+    >
+      <span className="transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
         {children}
-      </div>
-    </label>
+      </span>
+    </a>
+  );
+}
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+    </svg>
+  );
+}
+
+function GmailIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.83 20.87a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.87-.87z" />
+    </svg>
   );
 }
 
@@ -322,9 +288,9 @@ function buildEnter(root: HTMLElement, direction: Direction) {
 
   tl.fromTo(root, { autoAlpha: 0, y: dy }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0)
     .fromTo(
-      q(".c-head, .c-form"),
+      q(".c-head, .c-social"),
       { y: dy * 0.4, autoAlpha: 0 },
-      { y: 0, autoAlpha: 1, stagger: 0.05, duration: 0.45 },
+      { y: 0, autoAlpha: 1, stagger: 0.08, duration: 0.5 },
       0.1,
     );
 

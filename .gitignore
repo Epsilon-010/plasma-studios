@@ -1,0 +1,66 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build output
+dist
+dist-ssr
+build
+*.local
+
+# Vite cache
+.vite
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
+.now
+
+# Heavy / source media (don't ship raw exports to repo or Vercel)
+*.mov
+*.mp4
+*.MOV
+*.MP4
+*.psd
+*.ai
+*.afdesign
+*.fig
+*-Photoroom.png
+
+# Working folders not meant for production
+.agents/
+.claude/
+.cursor/
+docs/
+
+# Local cache files
+skills-lock.json
+
+# OS
+ehthumbs.db
+desktop.ini

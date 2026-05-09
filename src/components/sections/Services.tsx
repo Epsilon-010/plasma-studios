@@ -89,7 +89,7 @@ export function Services({ ref }: Props) {
     <section
       ref={root}
       data-section="servicios"
-      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 md:pb-24 overflow-hidden"
+      className="relative min-h-dvh w-full flex flex-col items-center md:justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 md:pb-24 overflow-hidden"
       style={{ background: "#ede0c2" }}
     >
       {/* Ambient honey blobs — section-level brand presence */}
@@ -123,7 +123,7 @@ export function Services({ ref }: Props) {
       />
 
       <div className="max-w-6xl w-full relative z-10">
-        <div className="s-head mb-14 md:mb-20">
+        <div className="s-head mb-10 md:mb-20">
           <h2
             className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] font-black tracking-[-0.035em] leading-none max-w-3xl pb-1"
             style={{ color: "#1c130a" }}
@@ -161,7 +161,7 @@ export function Services({ ref }: Props) {
         <div className="s-card mt-6">
           <a
             href="#contacto"
-            className="group glass-card-light glass-card-light--honey block p-8 md:p-10 rounded-3xl"
+            className="group glass-card-light glass-card-light--honey block p-6 md:p-10 rounded-3xl"
           >
             <span className="glass-card-blob-light" aria-hidden />
             <div className="relative z-10 flex items-center justify-between gap-6 flex-wrap">
@@ -210,7 +210,7 @@ const CapabilityCard = memo(function CapabilityCard({
   return (
     <a
       href="#contacto"
-      className="s-card group glass-card-crystal block p-8 md:p-9 rounded-3xl h-full"
+      className="s-card group glass-card-crystal block p-6 md:p-9 rounded-3xl h-full"
     >
       <span className="glass-card-blob-light" aria-hidden />
 

@@ -32,7 +32,7 @@ export function Manifesto({ ref }: Props) {
     <section
       ref={root}
       data-section="manifesto"
-      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 overflow-hidden"
+      className="relative min-h-dvh w-full flex flex-col items-center md:justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 md:pb-24 overflow-hidden"
       style={{ background: "#ede0c2" }}
     >
       {/* Ambient honey blob */}
@@ -58,7 +58,7 @@ export function Manifesto({ ref }: Props) {
 
       <div className="max-w-5xl w-full relative z-10">
         <div
-          className="text-[clamp(2.4rem,8vw,6rem)] font-display font-black leading-none tracking-[-0.035em]"
+          className="text-[clamp(1.9rem,6.5vw,5.5rem)] font-display font-black leading-[1.05] tracking-[-0.035em]"
           style={{ color: "#1c130a" }}
         >
           {/* Line 1 — addressed to the visitor's business */}
@@ -97,7 +97,7 @@ export function Manifesto({ ref }: Props) {
         </p>
 
         {/* 3 principles — poster-style cards */}
-        <div className="m-promises mt-16 grid md:grid-cols-3 gap-8 md:gap-10 max-w-5xl">
+        <div className="m-promises mt-12 md:mt-16 grid md:grid-cols-3 gap-5 md:gap-10 max-w-5xl w-full">
           {[
             {
               k: "01",
@@ -117,7 +117,7 @@ export function Manifesto({ ref }: Props) {
           ].map((p) => (
             <div
               key={p.k}
-              className="group glass-card-light p-7 md:p-8 rounded-2xl transition-all duration-500"
+              className="group glass-card-light p-6 md:p-8 rounded-2xl transition-all duration-500"
             >
               <span className="glass-card-blob-light" aria-hidden />
               <div className="relative z-10">

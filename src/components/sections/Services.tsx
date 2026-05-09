@@ -89,7 +89,7 @@ export function Services({ ref }: Props) {
     <section
       ref={root}
       data-section="servicios"
-      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 py-24 overflow-hidden"
+      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 md:pb-24 overflow-hidden"
       style={{ background: "#ede0c2" }}
     >
       {/* Ambient honey blobs — section-level brand presence */}

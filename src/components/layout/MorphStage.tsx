@@ -22,7 +22,7 @@ type SectionEntry = SectionMeta & {
 
 const SECTIONS: SectionEntry[] = [
   { id: "hero", label: "Inicio", inNav: false, Component: Hero },
-  { id: "manifesto", label: "Manifiesto", inNav: false, Component: Manifesto },
+  { id: "manifesto", label: "Enfoque", inNav: true, Component: Manifesto },
   { id: "servicios", label: "Servicios", inNav: true, Component: Services },
   { id: "trabajos", label: "Trabajos", inNav: true, Component: Portfolio },
   { id: "contacto", label: "Contacto", inNav: true, Component: Contact },

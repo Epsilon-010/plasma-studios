@@ -53,7 +53,7 @@ export function Portfolio({ ref }: Props) {
     <section
       ref={root}
       data-section="trabajos"
-      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 py-24 overflow-hidden"
+      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 md:pb-24 overflow-hidden"
       style={{ background: "#ede0c2" }}
     >
       {/* Ambient honey blob — corner accent */}
@@ -177,18 +177,15 @@ const ProjectCard = memo(function ProjectCard({ project }: { project: Project })
           />
         </div>
 
-        {/* Live iframe preview — pointer-events-none so click goes to parent <a> */}
-        <div className="relative aspect-16/10 overflow-hidden pointer-events-none">
+        {/* Live iframe preview — taller aspect on mobile, scaled to show desktop layout */}
+        <div className="relative aspect-4/3 md:aspect-16/10 overflow-hidden pointer-events-none">
           <iframe
             src={project.url}
             title={project.title}
             loading="lazy"
             sandbox="allow-scripts allow-same-origin"
-            className="absolute top-0 left-0 origin-top-left w-[200%] h-[200%]"
-            style={{
-              transform: "scale(0.5)",
-              border: "none",
-            }}
+            className="absolute top-0 left-0 origin-top-left w-[286%] h-[286%] scale-[0.35] md:w-[200%] md:h-[200%] md:scale-[0.5]"
+            style={{ border: "none" }}
           />
           {/* Hover honey halo overlay */}
           <div

@@ -89,7 +89,7 @@ export function Hero({ ref }: HeroProps) {
 
 
       {/* Main stack — centered text only */}
-      <div className="relative z-30 min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12">
+      <div className="relative z-30 min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 pt-28 md:pt-32 pb-16">
         {/* Title — stacked two-line, dreamcore (deep coffee + warm honey) */}
         <h1
           className="font-black tracking-[-0.04em] leading-[0.86] text-center"

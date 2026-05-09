@@ -32,7 +32,7 @@ export function Manifesto({ ref }: Props) {
     <section
       ref={root}
       data-section="manifesto"
-      className="relative min-h-dvh w-full flex items-center justify-center px-6 md:px-12 overflow-hidden"
+      className="relative min-h-dvh w-full flex flex-col items-center justify-center px-6 md:px-12 pt-28 md:pt-32 pb-20 overflow-hidden"
       style={{ background: "#ede0c2" }}
     >
       {/* Ambient honey blob */}

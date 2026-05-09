@@ -3,7 +3,6 @@ import { gsap } from "../../lib/gsap";
 import type { Direction, SectionHandle } from "../../lib/morph";
 
 const PHONE_DIGITS = "529514997286";
-const PHONE_DISPLAY = "+52 951 499 7286";
 const EMAIL = "plasmastudio44@gmail.com";
 const TIKTOK_HANDLE = "plasma.studios7";
 
@@ -49,13 +48,13 @@ export function Contact({ ref }: Props) {
         aria-hidden
       />
 
-      {/* Centered single-column pitch */}
-      <div className="c-head max-w-3xl w-full relative z-10 text-center">
+      {/* Centered minimal block — title + buttons */}
+      <div className="c-head max-w-2xl w-full relative z-10 text-center">
         <h2
           className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] font-black tracking-[-0.035em] leading-none pb-1"
           style={{ color: "#1c130a" }}
         >
-          Iniciemos{" "}
+          Iniciemos una{" "}
           <span
             className="italic"
             style={{
@@ -71,104 +70,11 @@ export function Contact({ ref }: Props) {
           className="mt-5 text-sm md:text-base leading-relaxed max-w-md mx-auto"
           style={{ color: "#3d2918" }}
         >
-          Reunión inicial sin compromiso de 30 minutos para evaluar
-          el alcance del proyecto y proponer cronograma.
+          Escríbenos por el canal que prefieras. Respondemos rápido en cualquiera.
         </p>
 
-        {/* Direct contact info — phone is the headliner */}
-        <div className="mt-10 space-y-3">
-          <a
-            href={`tel:+${PHONE_DIGITS}`}
-            className="block font-display text-3xl md:text-[2.4rem] font-black tracking-[-0.02em] hover:translate-x-0.5 transition-transform duration-300"
-            style={{ color: "#1c130a" }}
-          >
-            {PHONE_DISPLAY}
-          </a>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="block font-display text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300"
-            style={{ color: "#5a4332" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#1c130a")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#5a4332")}
-          >
-            {EMAIL}
-          </a>
-        </div>
-
-        {/* Quick service info — glass panel */}
-        <div className="glass-card-light mt-12 p-6 rounded-2xl max-w-md mx-auto text-left">
-          <div className="relative z-10 space-y-3">
-            <div
-              className="flex items-baseline justify-between gap-4 pb-3"
-              style={{ borderBottom: "1px solid rgba(176,126,61,0.18)" }}
-            >
-              <span
-                className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                style={{ color: "#8a6e52" }}
-              >
-                Respuesta
-              </span>
-              <span className="text-sm" style={{ color: "#3d2918" }}>
-                24 horas hábiles
-              </span>
-            </div>
-            <div
-              className="flex items-baseline justify-between gap-4 pb-3"
-              style={{ borderBottom: "1px solid rgba(176,126,61,0.18)" }}
-            >
-              <span
-                className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                style={{ color: "#8a6e52" }}
-              >
-                Reunión inicial
-              </span>
-              <span className="text-sm" style={{ color: "#3d2918" }}>
-                Sin compromiso · 30 min
-              </span>
-            </div>
-            <div className="flex items-baseline justify-between gap-4">
-              <span
-                className="font-mono text-[10px] tracking-[0.3em] uppercase"
-                style={{ color: "#8a6e52" }}
-              >
-                Ubicación
-              </span>
-              <span className="text-sm" style={{ color: "#3d2918" }}>
-                Oaxaca, México
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SOCIAL BLOCK — round icon buttons */}
-      <div className="c-social relative z-10 mt-20 md:mt-24 w-full max-w-3xl">
-        <div className="text-center mb-10">
-          <h3
-            className="font-display text-2xl md:text-4xl font-black tracking-[-0.02em] leading-[0.95] mb-3 pb-1"
-            style={{ color: "#1c130a" }}
-          >
-            También por{" "}
-            <span
-              className="italic"
-              style={{
-                fontFamily: '"Fraunces", Georgia, serif',
-                color: "#b07e3d",
-              }}
-            >
-              aquí
-            </span>
-            .
-          </h3>
-          <p
-            className="text-sm md:text-base leading-relaxed max-w-md mx-auto"
-            style={{ color: "#3d2918" }}
-          >
-            Donde sea más cómodo para ti. Respondemos rápido en cualquier canal.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-center gap-5 md:gap-7 flex-wrap">
+        {/* Round social buttons */}
+        <div className="c-social mt-12 flex items-center justify-center gap-5 md:gap-7 flex-wrap">
           <SocialButton
             href={`https://wa.me/${PHONE_DIGITS}`}
             ariaLabel="Contactar por WhatsApp"
